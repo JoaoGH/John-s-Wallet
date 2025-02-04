@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-public class DefaultCrudController<T, ID> {
+public abstract class DefaultCrudController<T, ID> {
 
     protected final DefaultCrudService<T, ID> service;
 
