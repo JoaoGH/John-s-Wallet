@@ -19,11 +19,11 @@ public class Divida extends AuditableEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "devedor_id", nullable = false)
     private Pessoa devedor;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "credor_id", nullable = false)
     private Pessoa credor;
 

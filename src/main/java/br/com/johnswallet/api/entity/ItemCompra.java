@@ -17,7 +17,7 @@ public class ItemCompra extends AuditableEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "compra_id", nullable = false)
     private Compra compra;
 
