@@ -35,6 +35,9 @@ public class Compra extends AuditableEntity {
     @Column(nullable = false)
     private String estabelecimento;
 
+    @Column(nullable = false)
+    private String descricao;
+
     @ManyToOne
     @JoinColumn(name = "pessoa_id", nullable = false)
     private Pessoa pessoa;
