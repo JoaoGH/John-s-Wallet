@@ -3,20 +3,17 @@ package br.com.johnswallet.api.entity;
 import br.com.johnswallet.api.enums.PagamentoStatusEnum;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "dividas")
 @Data
 @EntityListeners(AuditingEntityListener.class)
-public class Divida {
+public class Divida extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -46,13 +43,5 @@ public class Divida {
 
     @Column(name = "data_vencimento", nullable = false)
     private LocalDate dataVencimento;
-
-    @Column(name = "data_cadastro")
-    @CreatedDate
-    private LocalDateTime dataCadastro;
-
-    @Column(name = "data_atualizacao")
-    @LastModifiedDate
-    private LocalDateTime dataAtualizacao;
 
 }

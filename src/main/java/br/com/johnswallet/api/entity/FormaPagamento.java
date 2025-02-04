@@ -2,18 +2,15 @@ package br.com.johnswallet.api.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "formas_pagamento")
 @Data
 @EntityListeners(AuditingEntityListener.class)
-public class FormaPagamento {
+public class FormaPagamento extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,13 +22,5 @@ public class FormaPagamento {
     @Lob
     @Column
     private String descricao;
-
-    @Column(name = "data_cadastro")
-    @CreatedDate
-    private LocalDateTime dataCadastro;
-
-    @Column(name = "data_atualizacao")
-    @LastModifiedDate
-    private LocalDateTime dataAtualizacao;
 
 }
