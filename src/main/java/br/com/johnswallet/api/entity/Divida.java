@@ -34,6 +34,9 @@ public class Divida extends AuditableEntity {
     @Column
     private String descricao;
 
+    @Column
+    private String estabelecimento;
+
     @Column(length = 50, nullable = false)
     @Enumerated(EnumType.STRING)
     private PagamentoStatusEnum status;
