@@ -9,25 +9,21 @@ import java.util.List;
 
 public abstract class DefaultCrudService<T, ID> {
 
-    protected final JpaRepository<T, ID> repository;
-
-    protected DefaultCrudService(JpaRepository<T, ID> repository) {
-        this.repository = repository;
-    }
+    protected abstract JpaRepository<T, ID> getRepository();
 
     public List<T> list() {
-        return repository.findAll();
+        return getRepository().findAll();
     }
 
     public T get(ID id) {
-        return repository.findById(id).orElse(null);
+        return getRepository().findById(id).orElse(null);
     }
 
     @Transactional
     public T save(T entity) {
         beforeSave(entity);
 
-        entity = repository.save(entity);
+        entity = getRepository().save(entity);
 
         afterSave(entity);
 
@@ -40,7 +36,7 @@ public abstract class DefaultCrudService<T, ID> {
 
     @Transactional
     public T update(ID id, T updatedEntity) {
-        if (!repository.existsById(id)) {
+        if (!getRepository().existsById(id)) {
             throw new EntityNotFoundException("Entity not found with ID: " + id);
         }
 
@@ -48,7 +44,7 @@ public abstract class DefaultCrudService<T, ID> {
 
         beforeUpdate(updatedEntity);
 
-        updatedEntity = repository.save(updatedEntity);
+        updatedEntity = getRepository().save(updatedEntity);
 
         afterUpdate(updatedEntity);
 
@@ -61,7 +57,7 @@ public abstract class DefaultCrudService<T, ID> {
 
     @Transactional
     public void delete(ID id) {
-        if (!repository.existsById(id)) {
+        if (!getRepository().existsById(id)) {
             throw new EntityNotFoundException("Entity not found with ID: " + id);
         }
 
@@ -69,7 +65,7 @@ public abstract class DefaultCrudService<T, ID> {
 
         beforeDelete(entity);
 
-        repository.deleteById(id);
+        getRepository().deleteById(id);
 
         afterDelete(entity);
     }
