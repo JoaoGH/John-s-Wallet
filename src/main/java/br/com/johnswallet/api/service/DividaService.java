@@ -9,7 +9,7 @@ import br.com.johnswallet.api.entity.Pessoa;
 import br.com.johnswallet.api.enums.PagamentoStatusEnum;
 import br.com.johnswallet.api.repository.CompraRepository;
 import br.com.johnswallet.api.repository.DividaRepository;
-import br.com.johnswallet.api.rocketmq.MensagemProducer;
+import br.com.johnswallet.api.queue.MensagemProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;

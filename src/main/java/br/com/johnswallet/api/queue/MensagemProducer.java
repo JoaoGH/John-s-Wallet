@@ -1,4 +1,4 @@
-package br.com.johnswallet.api.rocketmq;
+package br.com.johnswallet.api.queue;
 
 import br.com.johnswallet.api.config.RabbitMQConfig;
 import br.com.johnswallet.api.dto.MensagemDTO;
